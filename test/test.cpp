@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "../heap/heap.hpp"
-#include "../heap/vec/heapvec.hpp"
+#include "../heap/vector/heapvec.hpp"
 #include "../priority_queue/pq.hpp"
 #include "../priority_queue/heap/pqheap.hpp"
 #include "../vector/vector.hpp"
