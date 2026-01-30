@@ -94,7 +94,7 @@ namespace lasd {
 
 
     template <typename Data>
-    void PQHeap<Data>::Change(ulong idx, const Data& dat) {
+    void PQHeap<Data>::Change(unsigned long idx, const Data& dat) {
         if (idx >= size)
             throw std::out_of_range("Index " + std::to_string(idx) + " out of range");
 
@@ -110,7 +110,7 @@ namespace lasd {
 
 
     template <typename Data>
-    void PQHeap<Data>::Change(ulong idx, Data&& dat) {
+    void PQHeap<Data>::Change(unsigned long idx, Data&& dat) {
         if (idx >= size)
             throw std::out_of_range("Index " + std::to_string(idx) + " out of range");
 
@@ -129,10 +129,10 @@ namespace lasd {
       // Auxiliary functions, if necessary!
 
     template <typename Data>
-    void PQHeap<Data>::Expand(ulong new_capacity) {
+    void PQHeap<Data>::Expand(unsigned long new_capacity) {
         Data* new_Elements = new Data[new_capacity];
 
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             std::swap(new_Elements[i], Elements[i]);
 
         delete[] Elements;
@@ -142,10 +142,10 @@ namespace lasd {
 
 
     template <typename Data>
-    void PQHeap<Data>::Reduce(ulong new_capacity) {
+    void PQHeap<Data>::Reduce(unsigned long new_capacity) {
         Data* new_Elements = new Data[new_capacity];
 
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             std::swap(new_Elements[i], Elements[i]);
 
         delete[] Elements;

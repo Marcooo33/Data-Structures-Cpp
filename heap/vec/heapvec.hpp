@@ -92,8 +92,8 @@ namespace lasd {
 
     // Auxiliary functions, if necessary!
 
-    void HeapifyToDown(ulong) noexcept;
-    void HeapifyToUp(ulong) noexcept;
+    void HeapifyToDown(unsigned long) noexcept;
+    void HeapifyToUp(unsigned long) noexcept;
 
   };
 

@@ -36,7 +36,7 @@ namespace lasd {
     /* ************************************************************************ */
 
     // Specific constructors
-    Vector(const ulong); // A vector with a given initial dimension
+    Vector(const unsigned long); // A vector with a given initial dimension
     Vector(const TraversableContainer<Data>&); // A vector obtained from a TraversableContainer
     Vector(MappableContainer<Data>&&); // A vector obtained from a MappableContainer
 
@@ -71,7 +71,7 @@ namespace lasd {
 
     // Specific member functions (inherited from MutableLinearContainer)
 
-    Data& operator[](ulong) override; // Override MutableLinearContainer member (must throw std::out_of_range when out of range)
+    Data& operator[](unsigned long) override; // Override MutableLinearContainer member (must throw std::out_of_range when out of range)
 
     Data& Front() override; // Override MutableLinearContainer member (must throw std::length_error when empty)
 
@@ -81,7 +81,7 @@ namespace lasd {
 
     // Specific member functions (inherited from LinearContainer)
 
-    const Data& operator[](ulong) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
+    const Data& operator[](unsigned long) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
 
     const Data& Front() const override; // Override LinearContainer member (must throw std::length_error when empty)
 
@@ -91,7 +91,7 @@ namespace lasd {
 
     // Specific member function (inherited from ResizableContainer)
 
-    void Resize(ulong) override; // Override ResizableContainer member
+    void Resize(unsigned long) override; // Override ResizableContainer member
 
     /* ************************************************************************ */
 
@@ -128,7 +128,7 @@ namespace lasd {
     /* ************************************************************************ */
 
     // Specific constructors
-    inline SortableVector(const ulong dim) : Vector<Data>(dim) {}; // A vector with a given initial dimension
+    inline SortableVector(const unsigned long dim) : Vector<Data>(dim) {}; // A vector with a given initial dimension
     inline SortableVector(const TraversableContainer<Data>& con) : Vector<Data>(con) {}; // A vector obtained from a TraversableContainer
     inline SortableVector(MappableContainer<Data>&& con) : Vector<Data>(std::move(con)) {}; // A vector obtained from a MappableContainer
 

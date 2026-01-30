@@ -48,7 +48,7 @@ namespace lasd {
 
     // Specific member functions
 
-    virtual const Data& operator[](ulong) const = 0; // (non-mutable version; concrete function must throw std::out_of_range when out of range)
+    virtual const Data& operator[](unsigned long) const = 0; // (non-mutable version; concrete function must throw std::out_of_range when out of range)
 
     virtual const Data& Front() const; // (non-mutable version; concrete function must throw std::length_error when empty)
 
@@ -114,7 +114,7 @@ namespace lasd {
 
     // Specific member functions
 
-    virtual Data& operator[](ulong) = 0; // (mutable version; concrete function must throw std::out_of_range when out of range)
+    virtual Data& operator[](unsigned long) = 0; // (mutable version; concrete function must throw std::out_of_range when out of range)
 
     virtual Data& Front(); // (mutable version; concrete function must throw std::length_error when empty)
 

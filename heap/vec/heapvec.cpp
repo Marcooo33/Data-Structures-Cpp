@@ -26,9 +26,9 @@ namespace lasd {
         if (size <= 1)
             return true;
 
-        for (ulong i = 0; i <= (size - 2) / 2; i++) {
-            ulong left = (2 * i) + 1;
-            ulong right = (2 * i) + 2;
+        for (unsigned long i = 0; i <= (size - 2) / 2; i++) {
+            unsigned long left = (2 * i) + 1;
+            unsigned long right = (2 * i) + 2;
 
             if (left < size && Elements[left] > Elements[i])
                 return false;
@@ -43,7 +43,7 @@ namespace lasd {
 
     template <typename Data>
     void HeapVec<Data>::Heapify() noexcept {
-        for (ulong i = size / 2; i > 0; i--)
+        for (unsigned long i = size / 2; i > 0; i--)
             HeapifyToDown(i - 1);
     }
 
@@ -56,8 +56,8 @@ namespace lasd {
     template <typename Data>
     void HeapVec<Data>::Sort() noexcept {
         Heapify();
-        ulong tmp_size = size;
-        for (ulong i = size - 1; i > 0; i--) {
+        unsigned long tmp_size = size;
+        for (unsigned long i = size - 1; i > 0; i--) {
             std::swap(Elements[0], Elements[i]);
             size--;
             HeapifyToDown(0);
@@ -72,10 +72,10 @@ namespace lasd {
     // Auxiliary functions, if necessary!
 
     template <typename Data>
-    void HeapVec<Data>::HeapifyToDown(ulong i) noexcept {
-        ulong max = i;
-        ulong left = (2 * i) + 1;
-        ulong right = (2 * i) + 2;
+    void HeapVec<Data>::HeapifyToDown(unsigned long i) noexcept {
+        unsigned long max = i;
+        unsigned long left = (2 * i) + 1;
+        unsigned long right = (2 * i) + 2;
 
         if (left < size && Elements[left] > Elements[max])
             max = left;
@@ -91,11 +91,11 @@ namespace lasd {
 
 
     template <typename Data>
-    void HeapVec<Data>::HeapifyToUp(ulong i) noexcept {
+    void HeapVec<Data>::HeapifyToUp(unsigned long i) noexcept {
         if (i == 0)
             return;
 
-        ulong parent = (i - 1) / 2;
+        unsigned long parent = (i - 1) / 2;
         if (Elements[i] > Elements[parent]) {
             std::swap(Elements[i], Elements[parent]);
             HeapifyToUp(parent);

@@ -356,7 +356,7 @@ namespace lasd {
     /* ************************************************************************ */
 
     template<typename Data>
-    const Data& SetLst<Data>::operator[](ulong i) const {
+    const Data& SetLst<Data>::operator[](unsigned long i) const {
         return List<Data>::operator[](i);
     }
 
@@ -395,8 +395,8 @@ namespace lasd {
     }
 
     template<typename Data>
-    void SetLst<Data>::MoveNode(ulong idx_final) const {
-        for (ulong i = idx_start; i < idx_final && curr != nullptr; i++) {
+    void SetLst<Data>::MoveNode(unsigned long idx_final) const {
+        for (unsigned long i = idx_start; i < idx_final && curr != nullptr; i++) {
             pred = curr;
             curr = curr->next;
         }
@@ -404,10 +404,10 @@ namespace lasd {
 
 
     template<typename Data>
-    void SetLst<Data>::BinarySearch(ulong i, ulong j, const Data& dat) const noexcept {
+    void SetLst<Data>::BinarySearch(unsigned long i, unsigned long j, const Data& dat) const noexcept {
         if (i <= j) {
             Node* temp_pred = pred;
-            ulong mid = i + (j - i) / 2;
+            unsigned long mid = i + (j - i) / 2;
             MoveNode(mid);
 
             if (curr->Element == dat)

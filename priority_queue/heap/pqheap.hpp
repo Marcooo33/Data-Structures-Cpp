@@ -25,7 +25,7 @@ namespace lasd {
   protected:
 
     using Container::size;
-    ulong capacity = 0;
+    unsigned long capacity = 0;
     using Vector<Data>::Elements;
 
 
@@ -92,15 +92,15 @@ namespace lasd {
     void Insert(const Data&) override; // Override PQ member (Copy of the value)
     void Insert(Data&&) override; // Override PQ member (Move of the value)
 
-    void Change(ulong, const Data&) override; // Override PQ member (Copy of the value)
-    void Change(ulong, Data&&) override; // Override PQ member (Move of the value)
+    void Change(unsigned long, const Data&) override; // Override PQ member (Copy of the value)
+    void Change(unsigned long, Data&&) override; // Override PQ member (Move of the value)
 
   protected:
 
     // Auxiliary functions, if necessary!
 
-    void Expand(ulong);
-    void Reduce(ulong);
+    void Expand(unsigned long);
+    void Reduce(unsigned long);
 
   };
 

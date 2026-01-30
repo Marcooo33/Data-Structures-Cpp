@@ -25,8 +25,8 @@ namespace lasd {
   protected:
 
     using Container::size;
-    ulong capacity = 0;
-    ulong Head = 0;
+    unsigned long capacity = 0;
+    unsigned long Head = 0;
     using Vector<Data>::Elements;
 
     // ...
@@ -107,7 +107,7 @@ namespace lasd {
 
     // Specific member functions (inherited from LinearContainer)
 
-    const Data& operator[](ulong) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
+    const Data& operator[](unsigned long) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
 
     /* ************************************************************************** */
 
@@ -126,19 +126,19 @@ namespace lasd {
 
     // Auxiliary functions, if necessary!
 
-    ulong BinarySearch(ulong, ulong, const Data&) const noexcept;   //Returns the index of data if it exists, otherwise the index of the successor
+    unsigned long BinarySearch(unsigned long, unsigned long, const Data&) const noexcept;   //Returns the index of data if it exists, otherwise the index of the successor
 
-    void Shift_sx(ulong) noexcept;
-    void Shift_dx(ulong) noexcept;
-    void Shift_sx_to_dx(ulong) noexcept;
-    void Shift_dx_to_sx(ulong) noexcept;
+    void Shift_sx(unsigned long) noexcept;
+    void Shift_dx(unsigned long) noexcept;
+    void Shift_sx_to_dx(unsigned long) noexcept;
+    void Shift_dx_to_sx(unsigned long) noexcept;
 
-    void Expand(ulong);
-    void Reduce(ulong);
+    void Expand(unsigned long);
+    void Reduce(unsigned long);
 
-    void Remove_at(ulong);
+    void Remove_at(unsigned long);
 
-    inline Data& AccessNonConst_at(ulong i) { return Elements[(Head + i) % capacity]; };
+    inline Data& AccessNonConst_at(unsigned long i) { return Elements[(Head + i) % capacity]; };
 
   };
 

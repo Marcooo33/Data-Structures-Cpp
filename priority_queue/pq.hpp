@@ -45,8 +45,8 @@ namespace lasd {
     virtual void Insert(const Data&) = 0; // Copy of the value
     virtual void Insert(Data&&) = 0; // Move of the value
 
-    virtual void Change(ulong, const Data&) = 0; // Copy of the value
-    virtual void Change(ulong, Data&&) = 0; // Move of the value
+    virtual void Change(unsigned long, const Data&) = 0; // Copy of the value
+    virtual void Change(unsigned long, Data&&) = 0; // Move of the value
 
   };
 

@@ -2,14 +2,14 @@
 
 #include "../heap/heap.hpp"
 #include "../heap/vec/heapvec.hpp"
-#include "../pq/pq.hpp"
-#include "../pq/heap/pqheap.hpp"
+#include "../priority_queue/pq.hpp"
+#include "../priority_queue/heap/pqheap.hpp"
 #include "../vector/vector.hpp"
 #include "test.hpp"
 
 #include "../set/set.hpp"
-#include "../set/vec/setvec.hpp"
-#include "../set/lst/setlst.hpp"
+#include "../set/vector/setvec.hpp"
+#include "../set/list/setlst.hpp"
 
 
 using namespace std;
@@ -27,7 +27,7 @@ namespace mytests {
 
   template <typename Data>
   bool IsSorted(const HeapVec<Data>& heap) {
-    for (ulong i = 0; i < heap.Size() - 1; i++) {
+    for (unsigned long i = 0; i < heap.Size() - 1; i++) {
       if (heap[i] > heap[i + 1])
         return false;
     }

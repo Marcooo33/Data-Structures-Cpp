@@ -33,7 +33,7 @@ namespace lasd {
             Tail = Head;
 
             Node* curr = list.Head->next;
-            for (ulong i = 1; i < list.size; i++, curr = curr->next) {
+            for (unsigned long i = 1; i < list.size; i++, curr = curr->next) {
                 Tail->next = new Node(*curr);
                 Tail = Tail->next;
             }
@@ -60,7 +60,7 @@ namespace lasd {
     template<typename Data>
     List<Data>::~List() {
         Node* curr = Head;
-        for (ulong i = 0; i < size; i++) {
+        for (unsigned long i = 0; i < size; i++) {
             Node* next_node = curr->next;
             delete curr;
             curr = next_node;
@@ -76,7 +76,7 @@ namespace lasd {
     List<Data>& List<Data>::operator=(const List& list) {
         Node* curr = Head;
         Node* other_curr = list.Head;
-        ulong i;
+        unsigned long i;
 
         if (size == list.size) {
             for (i = 0; i < size; i++, curr = curr->next, other_curr = other_curr->next)
@@ -148,7 +148,7 @@ namespace lasd {
         else {
             Node* curr = Head;
             Node* other_curr = list.Head;
-            for (ulong i = 0; i < size; i++, curr = curr->next, other_curr = other_curr->next) {
+            for (unsigned long i = 0; i < size; i++, curr = curr->next, other_curr = other_curr->next) {
                 if (curr->Element != other_curr->Element)
                     return false;
             }
@@ -290,7 +290,7 @@ namespace lasd {
         else {
             delete Tail;
             Node* curr = Head;
-            for (ulong i = 0; i < size - 2; i++, curr = curr->next) { ; }   //Reach the element before the tail
+            for (unsigned long i = 0; i < size - 2; i++, curr = curr->next) { ; }   //Reach the element before the tail
             curr->next = nullptr;
             Tail = curr;
         }
@@ -314,7 +314,7 @@ namespace lasd {
             else {
                 delete Tail;
                 Node* curr = Head;
-                for (ulong i = 0; i < size - 2; i++, curr = curr->next) { ; }   //Reach the element before the tail
+                for (unsigned long i = 0; i < size - 2; i++, curr = curr->next) { ; }   //Reach the element before the tail
                 curr->next = nullptr;
                 Tail = curr;
             }
@@ -328,13 +328,13 @@ namespace lasd {
 
     // Specific member functions (inherited from LinearContainer)
     template<typename Data>
-    const Data& List<Data>::operator[](ulong idx) const {
+    const Data& List<Data>::operator[](unsigned long idx) const {
         if (idx >= size)
             throw std::out_of_range("Index " + std::to_string(idx) + " out of range");
 
         else {
             Node* curr = Head;
-            for (ulong i = 0; i < idx; i++, curr = curr->next) { ; }     //Reach the element at index idx
+            for (unsigned long i = 0; i < idx; i++, curr = curr->next) { ; }     //Reach the element at index idx
             return curr->Element;
         }
     }
@@ -363,7 +363,7 @@ namespace lasd {
    // Specific member functions (inherited from MutableLinearContainer)
 
     template<typename Data>
-    Data& List<Data>::operator[](ulong idx) {
+    Data& List<Data>::operator[](unsigned long idx) {
         return const_cast<Data&>(static_cast<const List<Data> *> (this)->operator[](idx));
     }
 
@@ -422,7 +422,7 @@ namespace lasd {
     template <typename Data>
     void List<Data>::Clear() {
         Node* curr = Head;
-        for (ulong i = 0; i < size; i++) {
+        for (unsigned long i = 0; i < size; i++) {
             Node* next_node = curr->next;
             delete curr;
             curr = next_node;
@@ -438,7 +438,7 @@ namespace lasd {
 
     template <typename Data>
     void List<Data>::PreOrderTraverse(TraverseFun fun, const Node* curr) const {
-        for (ulong i = 0; i < size; i++, curr = curr->next)
+        for (unsigned long i = 0; i < size; i++, curr = curr->next)
             fun(curr->Element);
     }
 
@@ -452,7 +452,7 @@ namespace lasd {
 
     template <typename Data>
     void List<Data>::PreOrderMap(MapFun fun, Node* curr) {
-        for (ulong i = 0; i < size; i++, curr = curr->next)
+        for (unsigned long i = 0; i < size; i++, curr = curr->next)
             fun(curr->Element);
     }
 

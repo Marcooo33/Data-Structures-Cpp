@@ -106,7 +106,7 @@ namespace lasd {
 
     // Specific member functions (inherited from LinearContainer)
 
-    const Data& operator[](ulong) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
+    const Data& operator[](unsigned long) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
 
     /* ************************************************************************** */
 
@@ -127,11 +127,11 @@ namespace lasd {
     mutable Node* pred = nullptr;
     mutable Node* curr = Head;
     mutable Node* start = Head;
-    mutable ulong idx_start = 0;
+    mutable unsigned long idx_start = 0;
 
     void ResetReferences() const noexcept;
-    void MoveNode(ulong) const;
-    void BinarySearch(ulong, ulong, const Data&) const noexcept; // If data exists, curr points to the node containing the data, otherwise curr points to the node containing the data’s successor. pred always points to the node containing the data’s predecessor.
+    void MoveNode(unsigned long) const;
+    void BinarySearch(unsigned long, unsigned long, const Data&) const noexcept; // If data exists, curr points to the node containing the data, otherwise curr points to the node containing the data’s successor. pred always points to the node containing the data’s predecessor.
     void RemoveNode(Node*&);
 
 

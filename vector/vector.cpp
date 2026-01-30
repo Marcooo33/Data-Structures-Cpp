@@ -3,7 +3,7 @@ namespace lasd {
     // Specific constructors (Vector)
 
     template <typename Data>
-    Vector<Data>::Vector(const ulong dim) {
+    Vector<Data>::Vector(const unsigned long dim) {
         size = dim;
         Elements = new Data[dim];
     }
@@ -14,7 +14,7 @@ namespace lasd {
         size = con.Size();
         Elements = new Data[size];
 
-        ulong i = 0;
+        unsigned long i = 0;
         con.Traverse(
             [this, &i](const Data& dat) {
                 Elements[i] = dat;
@@ -28,7 +28,7 @@ namespace lasd {
         size = con.Size();
         Elements = new Data[size];
 
-        ulong i = 0;
+        unsigned long i = 0;
         con.Map(
             [this, &i](Data& dat) {
                 Elements[i] = std::move(dat);
@@ -44,7 +44,7 @@ namespace lasd {
     Vector<Data>::Vector(const Vector& vec) {
         size = vec.size;
         Elements = new Data[size];
-        for (uint i = 0; i < size; i++)
+        for (unsigned int i = 0; i < size; i++)
             Elements[i] = vec.Elements[i];
     }
 
@@ -105,7 +105,7 @@ namespace lasd {
             return false;
 
         else {
-            for (uint i = 0; i < size; i++)
+            for (unsigned int i = 0; i < size; i++)
                 if (Elements[i] != vec.Elements[i])
                     return false;
 
@@ -123,7 +123,7 @@ namespace lasd {
     // Specific member functions (inherited from LinearContainer)
 
     template <typename Data>
-    const Data& Vector<Data>::operator[](ulong i) const {
+    const Data& Vector<Data>::operator[](unsigned long i) const {
         if (i >= size)
             throw std::out_of_range("Index " + std::to_string(i) + " out of range");
 
@@ -155,7 +155,7 @@ namespace lasd {
      // Specific member functions (inherited from MutableLinearContainer)
 
     template <typename Data>
-    Data& Vector<Data>::operator[](ulong i) {
+    Data& Vector<Data>::operator[](unsigned long i) {
         return const_cast<Data&>(static_cast<const Vector<Data>*> (this)->operator[](i));
     }
 
@@ -175,7 +175,7 @@ namespace lasd {
     // Specific member function (inherited from ResizableContainer)
 
     template <typename Data>
-    void Vector<Data>::Resize(ulong new_size) {
+    void Vector<Data>::Resize(unsigned long new_size) {
         if (new_size == 0)
             Clear();
 
@@ -185,8 +185,8 @@ namespace lasd {
         else {
             Data* tmp_elements = new Data[new_size];
 
-            ulong tmp_size = (size < new_size) ? size : new_size;
-            for (ulong i = 0; i < tmp_size; i++)
+            unsigned long tmp_size = (size < new_size) ? size : new_size;
+            for (unsigned long i = 0; i < tmp_size; i++)
                 std::swap(Elements[i], tmp_elements[i]);
 
             delete[] Elements;

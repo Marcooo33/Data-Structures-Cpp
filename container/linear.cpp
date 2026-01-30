@@ -14,7 +14,7 @@ namespace lasd {
         }
 
 
-        for (ulong i = 0; i < con.size; i++) {
+        for (unsigned long i = 0; i < con.size; i++) {
             if (this->operator[](i) != con.operator[](i))
                 return false;
         }
@@ -38,13 +38,13 @@ namespace lasd {
 
     template <typename Data>
     void LinearContainer<Data>::PreOrderTraverse(TraverseFun fun) const {
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             fun(operator[](i));
     }
 
     template <typename Data>
     void LinearContainer<Data>::PostOrderTraverse(TraverseFun fun) const {
-        for (ulong i = size; i > 0; i--)
+        for (unsigned long i = size; i > 0; i--)
             fun(operator[](i - 1));
     }
 
@@ -78,13 +78,13 @@ namespace lasd {
 
     template <typename Data>
     void MutableLinearContainer<Data>::PreOrderMap(MapFun fun) {
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             fun(operator[](i));
     }
 
     template <typename Data>
     void MutableLinearContainer<Data>::PostOrderMap(MapFun fun) {
-        for (ulong i = size; i > 0; i--)
+        for (unsigned long i = size; i > 0; i--)
             fun(operator[](i - 1));
     }
 
@@ -112,9 +112,9 @@ namespace lasd {
     //Insertion Sort  
     template <typename Data>
     void SortableLinearContainer<Data>::Sort() noexcept {
-        for (ulong i = 1; i < size; i++) {
+        for (unsigned long i = 1; i < size; i++) {
             Data key = this->operator[](i);
-            ulong j = i;
+            unsigned long j = i;
 
             while (j > 0 && this->operator[](j - 1) > key) {
                 this->operator[](j) = this->operator[](j - 1);

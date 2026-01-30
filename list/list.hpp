@@ -136,7 +136,7 @@ namespace lasd {
 
     // Specific member functions (inherited from MutableLinearContainer)
 
-    Data& operator[](ulong) override; // Override MutableLinearContainer member (must throw std::out_of_range when out of range)
+    Data& operator[](unsigned long) override; // Override MutableLinearContainer member (must throw std::out_of_range when out of range)
 
     Data& Front() override; // Override MutableLinearContainer member (must throw std::length_error when empty)
 
@@ -146,7 +146,7 @@ namespace lasd {
 
     // Specific member functions (inherited from LinearContainer)
 
-    const Data& operator[](ulong) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
+    const Data& operator[](unsigned long) const override; // Override LinearContainer member (must throw std::out_of_range when out of range)
 
     const Data& Front() const override; // Override LinearContainer member (must throw std::length_error when empty)
 

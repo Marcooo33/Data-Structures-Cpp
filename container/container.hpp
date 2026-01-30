@@ -16,7 +16,7 @@ namespace lasd {
 
   protected:
 
-    ulong size = 0;
+    unsigned long size = 0;
 
     /* ************************************************************************ */
 
@@ -50,7 +50,7 @@ namespace lasd {
       return size == 0;
     } // (concrete function should not throw exceptions)
 
-    inline virtual ulong Size() const noexcept {
+    inline virtual unsigned long Size() const noexcept {
       return size;
     } // (concrete function should not throw exceptions)
 
@@ -132,7 +132,7 @@ namespace lasd {
 
     // Specific member functions
 
-    virtual void Resize(ulong) = 0;
+    virtual void Resize(unsigned long) = 0;
 
     /* ************************************************************************ */
 

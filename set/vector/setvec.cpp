@@ -37,7 +37,7 @@ namespace lasd {
         Head = svec.Head;
         Elements = new Data[capacity];
 
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             Elements[i] = svec.Elements[i];
     }
 
@@ -90,7 +90,7 @@ namespace lasd {
             return false;
 
         else {
-            for (ulong i = 0; i < size; i++)
+            for (unsigned long i = 0; i < size; i++)
                 if ((*this)[i] != svec[i])
                     return false;
 
@@ -181,7 +181,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Predecessor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
         if (idx == 0)
             throw std::length_error("Predecessor not found");
 
@@ -194,7 +194,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Predecessor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
         if (idx == 0)
             throw std::length_error("Predecessor not found");
 
@@ -210,7 +210,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Predecessor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
         if (idx == 0)
             throw std::length_error("Predecessor not found");
 
@@ -225,7 +225,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Successor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
 
         if (idx >= size)
             throw std::length_error("Successor not found");
@@ -244,7 +244,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Successor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
         if (idx >= size)
             throw std::length_error("Successor not found");
 
@@ -270,7 +270,7 @@ namespace lasd {
         if (size == 0)
             throw std::length_error("Successor not found");
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
         if (idx >= size)
             throw std::length_error("Successor not found");
 
@@ -301,7 +301,7 @@ namespace lasd {
         if (size == capacity)
             Expand(capacity * 2);
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
 
         if (idx >= size || (*this)[idx] != dat) {
             if (idx < size / 2)
@@ -338,7 +338,7 @@ namespace lasd {
         if (size == capacity)
             Expand(capacity * 2);
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
 
         if (idx >= size || (*this)[idx] != dat) {
             if (idx < size / 2)
@@ -363,7 +363,7 @@ namespace lasd {
             return false;
 
         else {
-            ulong idx = BinarySearch(0, size - 1, dat);
+            unsigned long idx = BinarySearch(0, size - 1, dat);
 
             if (idx < size && (*this)[idx] == dat) {
                 if (idx < size / 2)
@@ -390,7 +390,7 @@ namespace lasd {
     // Specific member functions (inherited from LinearContainer)
 
     template <typename Data>
-    const Data& SetVec<Data>::operator[](ulong i) const {
+    const Data& SetVec<Data>::operator[](unsigned long i) const {
         if (i >= size)
             throw std::out_of_range("Index " + std::to_string(i) + " out of range");
 
@@ -407,7 +407,7 @@ namespace lasd {
         if (size == 0)
             return false;
 
-        ulong idx = BinarySearch(0, size - 1, dat);
+        unsigned long idx = BinarySearch(0, size - 1, dat);
 
         if (idx < size && (*this)[idx] == dat)
             return true;
@@ -433,9 +433,9 @@ namespace lasd {
     // Auxiliary functions
 
     template <typename Data>
-    ulong SetVec<Data>::BinarySearch(ulong i, ulong j, const Data& dat) const noexcept {
+    unsigned long SetVec<Data>::BinarySearch(unsigned long i, unsigned long j, const Data& dat) const noexcept {
         if (i <= j) {
-            ulong mid = i + (j - i) / 2;
+            unsigned long mid = i + (j - i) / 2;
 
             if ((*this)[mid] == dat)
                 return mid;
@@ -460,22 +460,22 @@ namespace lasd {
     }
 
     template<typename Data>
-    void SetVec<Data>::Shift_sx(ulong idx) noexcept {
+    void SetVec<Data>::Shift_sx(unsigned long idx) noexcept {
         Head = (Head == 0) ? capacity - 1 : Head - 1;
-        for (ulong i = 0; i < idx; i++)
+        for (unsigned long i = 0; i < idx; i++)
             AccessNonConst_at(i) = std::move((*this)[i + 1]);
     }
 
     template<typename Data>
-    void SetVec<Data>::Shift_dx(ulong idx) noexcept {
-        for (ulong i = size; i > idx; i--)
+    void SetVec<Data>::Shift_dx(unsigned long idx) noexcept {
+        for (unsigned long i = size; i > idx; i--)
             AccessNonConst_at(i) = std::move((*this)[i - 1]);
     }
 
 
     template<typename Data>
-    void SetVec<Data>::Shift_sx_to_dx(ulong idx) noexcept {
-        for (ulong i = idx; i > 0; i--)
+    void SetVec<Data>::Shift_sx_to_dx(unsigned long idx) noexcept {
+        for (unsigned long i = idx; i > 0; i--)
             AccessNonConst_at(i) = std::move((*this)[i - 1]);
 
         Head = Head + 1;
@@ -483,14 +483,14 @@ namespace lasd {
     }
 
     template<typename Data>
-    void SetVec<Data>::Shift_dx_to_sx(ulong idx) noexcept {
-        for (ulong i = idx; i < size - 1; i++)
+    void SetVec<Data>::Shift_dx_to_sx(unsigned long idx) noexcept {
+        for (unsigned long i = idx; i < size - 1; i++)
             AccessNonConst_at(i) = std::move((*this)[i + 1]);
     }
 
 
     template<typename Data>
-    void SetVec<Data>::Remove_at(ulong idx) {
+    void SetVec<Data>::Remove_at(unsigned long idx) {
         if (idx < size / 2)
             Shift_sx_to_dx(idx);
 
@@ -502,10 +502,10 @@ namespace lasd {
 
 
     template <typename Data>
-    void SetVec<Data>::Expand(ulong new_capacity) {
+    void SetVec<Data>::Expand(unsigned long new_capacity) {
         Data* new_Elements = new Data[new_capacity];
 
-        for (ulong i = 0; i < size; i++)
+        for (unsigned long i = 0; i < size; i++)
             std::swap(new_Elements[i], AccessNonConst_at(i));
 
         delete[] Elements;
@@ -516,11 +516,11 @@ namespace lasd {
 
 
     template <typename Data>
-    void SetVec<Data>::Reduce(ulong new_capacity) {
+    void SetVec<Data>::Reduce(unsigned long new_capacity) {
         Data* new_Elements = new Data[new_capacity];
 
-        ulong tmp_size = (size < new_capacity) ? size : new_capacity;
-        for (ulong i = 0; i < tmp_size; i++)
+        unsigned long tmp_size = (size < new_capacity) ? size : new_capacity;
+        for (unsigned long i = 0; i < tmp_size; i++)
             std::swap(new_Elements[i], AccessNonConst_at(i));
 
         delete[] Elements;
